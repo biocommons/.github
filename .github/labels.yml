@@ -1,3 +1,5 @@
+# https://raw.githubusercontent.com/EndBug/labels/main/labels.yml
+
 - name: "bug"
   color: "d73a4a"
   description: "Something isn't working"
@@ -46,14 +48,14 @@
 - name: "stale"
   color: "777777"
   description: "Issue is stale and subject to automatic closing"
-  from_name: "Stale"
+  aliases: ["Stale"]
 
 - name: "stale closed"
   color: "444444"
   description: "Issue was closed automatically due to inactivity"
-  from_name: "stale-closed"
+  aliases: ["stale-closed"]
 
 - name: "won't fix"
   color: "ffffff"
   description: "This will not be worked on"
-  from_name: wontfix
+  aliases: ["wontfix"]
