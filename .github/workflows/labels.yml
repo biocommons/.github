@@ -24,7 +24,7 @@ jobs:
       - uses: EndBug/label-sync@v2
         with:
           config-file: |
-            https://raw.githubusercontent.com/biocommons/.github/main/.github/labels.yml
+            https://raw.githubusercontent.com/biocommons/.github/main/etc/labels.yml
             .github/labels.yml
 
           delete-other-labels: false

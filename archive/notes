@@ -1,3 +1,11 @@
+## Inspiration
+
+https://axolo.co/blog/p/part-3-github-pull-request-template
+https://raw.githubusercontent.com/EndBug/labels/main/labels.yml
+
+
+# Command lines
+
 D=$(ls -1d */.git | cut -d/ -f1 | egrep -v 'biocommons.example|seqrepo-rs')
 git-all () { for d in $D; do (set -x; git -C $d "$@"); done }
 
@@ -7,4 +15,3 @@ for d in $D; do \cp -a biocommons.example/.github/workflows/labels.yml $d/.githu
 git-all add .github/labels.yml .github/workflows/labels.yml
 git-all com -m "add standardized github labels and update action" .github/labels.yml .github/workflows/labels.yml
 git-all push
-https://axolo.co/blog/p/part-3-github-pull-request-template
