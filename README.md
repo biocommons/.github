@@ -12,3 +12,28 @@ The contents of this repo are used in various ways by GitHub. Here's a summary:
 
 - etc/ is a Reece-ism.  It is intended for global configuration, such as labels.
 
+- profile/README.md is our organizational README at https://github.com/biocommons/
+
+---
+
+      snafu$ tree */ .github/
+      docs/
+      ├── CODE_OF_CONDUCT.md
+      ├── CONTRIBUTING.md
+      ├── GOVERNANCE.md
+      └── SUPPORT.md
+      etc/
+      └── labels.yml
+      profile/
+      └── README.md
+      .github/
+      ├── CODEOWNERS
+      ├── ISSUE_TEMPLATE
+      │   ├── bug-report.md
+      │   ├── feature-request.md
+      │   └── project-proposal.md
+      ├── labels.yml
+      └── workflows
+          ├── labels.yml
+          ├── python-package.yml
+          └── stale.yml
