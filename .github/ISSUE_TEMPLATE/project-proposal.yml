@@ -4,15 +4,6 @@ title: "[Project Proposal]: "
 labels: ["project proposal"]
 
 body:
-  - type: input
-    id: title
-    attributes:
-      label: Title
-      description: "Provide a concise title for the project."
-      placeholder: "Enter the project title"
-    validations:
-      required: true
-
   - type: textarea
     id: summary
     attributes:
@@ -22,20 +13,11 @@ body:
     validations:
       required: true
 
-  - type: input
-    id: proposer-name
-    attributes:
-      label: Proposer's Name
-      description: "Name of the person proposing the project."
-      placeholder: "Enter your full name"
-    validations:
-      required: true
-
   - type: textarea
     id: community-outcomes
     attributes:
       label: Community Outcomes
-      description: "Describe the expected outcomes for the community."
+      description: "Describe the expected outcomes and benefits for the community."
       placeholder: "What will the community gain from this project?"
     validations:
       required: true
