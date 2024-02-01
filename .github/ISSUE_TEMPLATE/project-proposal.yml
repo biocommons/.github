@@ -1,10 +1,8 @@
----
 name: Internship Project Proposal
 description: Template for proposing new internship projects
 title: "[Project Proposal]: "
 labels: ["project proposal"]
-assignees: ""
----
+
 body:
   - type: input
     id: title
