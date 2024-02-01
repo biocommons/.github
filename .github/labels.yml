@@ -31,7 +31,7 @@
 - name: "keep alive"
   color: "666666"
   description: "exempt issue from staleness checks"
-  from_name: "keep alive"
+  aliases: ["keep alive"]
 
 - name: "project proposal"
   color: "d876e3"
