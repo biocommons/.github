@@ -1,0 +1,79 @@
+---
+name: Internship Project Proposal
+description: Template for proposing new internship projects
+title: "[Project Proposal]: "
+labels: ["project proposal"]
+assignees: ""
+---
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: "Provide a concise title for the project."
+      placeholder: "Enter the project title"
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: "Brief summary of the project idea."
+      placeholder: "Enter a brief summary"
+    validations:
+      required: true
+
+  - type: input
+    id: proposer-name
+    attributes:
+      label: Proposer's Name
+      description: "Name of the person proposing the project."
+      placeholder: "Enter your full name"
+    validations:
+      required: true
+
+  - type: textarea
+    id: community-outcomes
+    attributes:
+      label: Community Outcomes
+      description: "Describe the expected outcomes for the community."
+      placeholder: "What will the community gain from this project?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: technical-deliverables
+    attributes:
+      label: Technical Deliverables
+      description: "List the technical outputs of the project."
+      placeholder: "Specify the technical deliverables"
+    validations:
+      required: true
+
+  - type: textarea
+    id: required-skills
+    attributes:
+      label: Required and Desired Skills
+      description: "List the skills required and desired for this project."
+      placeholder: "Enter required and desired skills in list format"
+    validations:
+      required: true
+
+  - type: textarea
+    id: benefits-to-intern
+    attributes:
+      label: Benefits to Intern
+      description: "Explain how the intern will benefit from working on this project."
+      placeholder: "What will the intern learn or gain?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: detailed-description
+    attributes:
+      label: Detailed Description
+      description: "Provide a detailed description of the project."
+      placeholder: "Enter a detailed description"
+    validations:
+      required: true
