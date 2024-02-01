@@ -28,5 +28,3 @@ jobs:
             .github/labels.yml
 
           delete-other-labels: false
-          dry-run: true
-          #token: ${{ secrets.GITHUB_TOKEN }}
