@@ -18,9 +18,6 @@ The contents of this repo are used in various ways by GitHub. Here's a summary:
 
 ---
 
-    snafu$ tree */ .github/
-    actions/
-    └── stale.yml
     docs/
     ├── CODE_OF_CONDUCT.md
     ├── CONTRIBUTING.md
@@ -30,14 +27,19 @@ The contents of this repo are used in various ways by GitHub. Here's a summary:
     └── labels.yml
     profile/
     └── README.md
+    workflow-templates/
+    ├── biocommons.svg
+    ├── labels.yml
+    ├── python-package.yml
+    ├── stale.properties.json
+    ├── stale.svg
+    └── stale.yml
     .github/
     ├── CODEOWNERS
     ├── ISSUE_TEMPLATE
     │   ├── bug-report.md
     │   ├── feature-request.md
-    │   └── project-proposal.md
+    │   └── project-proposal.yml
     ├── labels.yml
     └── workflows
-        ├── labels.yml
-        ├── python-package.yml
         └── stale.yml
