@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="488.8808"
+   height="488.8808"
+   version="1.1"
+   id="svg46"
+   sodipodi:docname="logo.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview48"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="11.619178"
+     inkscape:cx="243.9071"
+     inkscape:cy="265.85357"
+     inkscape:window-width="3840"
+     inkscape:window-height="2096"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg46" />
+  <!--
+    {'blade_l': 105, 'blade_r': 85, 'blade_w': 85, 'border_w': 5.0, 'clockwise': True, 'colors': ['#a61c00', '#cc0000', '#e69138', '#f1c232', '#6aa84f', '#45818e', '#3c78d8', '#3d85c6', '#674ea7', '#a64d79'], 'flip': False, 'n_blades': 10, 'offset_x': 85, 'offset_y': 85, 'sandbox': False, 'blade_l2': 20, 'blade_w2': 0, 'rot': 36.0}
+  -->
+  <style
+     id="style2">
+    .color0 {fill: #a61c00;}
+    .color1 {fill: #cc0000;}
+    .color2 {fill: #e69138;}
+    .color3 {fill: #f1c232;}
+    .color4 {fill: #6aa84f;}
+    .color5 {fill: #45818e;}
+    .color6 {fill: #3c78d8;}
+    .color7 {fill: #3d85c6;}
+    .color8 {fill: #674ea7;}
+    .color9 {fill: #a64d79;}
+  </style>
+  <defs
+     id="defs22">
+    <linearGradient
+       id="linearGradient951"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#204a87;stop-opacity:1;"
+         offset="0"
+         id="stop949" />
+    </linearGradient>
+    <path
+       id="blade2"
+       d="m 85,85 v 0 A 85,85 0 0 1 0,0 v -20 0 a 85,85 0 0 1 85,85 z"
+       stroke="#ffffff"
+       stroke-width="5" />
+    <mask
+       id="blademask">
+      <use
+         xlink:href="#blade2"
+         fill="#ffffff"
+         stroke="#ffffff"
+         id="use5" />
+      <use
+         xlink:href="#blade2"
+         transform="rotate(36)"
+         fill="#000000"
+         stroke="#ffffff"
+         id="use7" />
+    </mask>
+    <g
+       id="bladepartial">
+      <use
+         xlink:href="#blade2"
+         mask="url(#blademask)"
+         id="use10" />
+      <use
+         xlink:href="#blade2"
+         transform="rotate(36)"
+         mask="url(#blademask)"
+         fill="none"
+         id="use12" />
+    </g>
+    <g
+       id="crosshairs">
+      <rect
+         x="-200"
+         y="-200"
+         width="400"
+         height="400"
+         fill="#dddddd"
+         id="rect15" />
+      <line
+         x1="-200"
+         x2="200"
+         y1="0"
+         y2="0"
+         stroke="#aaaaaa"
+         stroke-width="0.5"
+         id="line17" />
+      <line
+         x1="0"
+         x2="0"
+         y1="-200"
+         y2="200"
+         stroke="#aaaaaa"
+         stroke-width="0.5"
+         id="line19" />
+    </g>
+  </defs>
+  <use
+     xlink:href="#bladepartial"
+     class="color0"
+     transform="matrix(2,0,0,2,244.44039,244.44039)"
+     id="use24" />
+  <use
+     xlink:href="#bladepartial"
+     class="color1"
+     transform="matrix(1.618034,1.1755705,-1.1755705,1.618034,244.44039,244.44039)"
+     id="use26" />
+  <use
+     xlink:href="#bladepartial"
+     class="color2"
+     transform="matrix(0.61803399,1.902113,-1.902113,0.61803399,244.44039,244.44039)"
+     id="use28" />
+  <use
+     xlink:href="#bladepartial"
+     class="color3"
+     transform="matrix(-0.61803399,1.902113,-1.902113,-0.61803399,244.44039,244.44039)"
+     id="use30" />
+  <use
+     xlink:href="#bladepartial"
+     class="color4"
+     transform="matrix(-1.618034,1.1755705,-1.1755705,-1.618034,244.44039,244.44039)"
+     id="use32" />
+  <use
+     xlink:href="#bladepartial"
+     class="color5"
+     transform="matrix(-2,0,0,-2,244.44039,244.44039)"
+     id="use34" />
+  <use
+     xlink:href="#bladepartial"
+     class="color6"
+     transform="matrix(-1.618034,-1.1755705,1.1755705,-1.618034,244.44039,244.44039)"
+     id="use36" />
+  <use
+     xlink:href="#bladepartial"
+     class="color7"
+     transform="matrix(-0.61803399,-1.902113,1.902113,-0.61803399,244.44039,244.44039)"
+     id="use38" />
+  <use
+     xlink:href="#bladepartial"
+     class="color8"
+     transform="matrix(0.61803399,-1.902113,1.902113,0.61803399,244.44039,244.44039)"
+     id="use40" />
+  <use
+     xlink:href="#bladepartial"
+     class="color9"
+     transform="matrix(1.618034,-1.1755705,1.1755705,1.618034,244.44039,244.44039)"
+     id="use42" />
+  <rect
+     style="fill:#ffffff;fill-opacity:1"
+     id="rect393"
+     width="3.8278522"
+     height="14.345385"
+     x="247.41583"
+     y="229.00439" />
+  <rect
+     style="fill:#ffffff;fill-opacity:1"
+     id="rect393-3"
+     width="13.754867"
+     height="5.6175599"
+     x="263.00009"
+     y="209.07587" />
+</svg>
