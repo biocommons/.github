@@ -1,0 +1,5 @@
+{
+    "name": "biocommons stale issue and pr workflow",
+    "description": "Reminds users of stale issues, and closes them if inactive",
+    "iconName": "stale"
+}
