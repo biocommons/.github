@@ -1,0 +1,5 @@
+{
+    "name": "biocommons label synchronizer",
+    "description": "Synchronizes repo labels with biocommons defaults and local additions",
+    "iconName": "biocommons"
+}
