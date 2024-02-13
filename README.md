@@ -4,17 +4,17 @@ This repo contains biocommons-wide configuration and templates.
 
 The contents of this repo are used in various ways by GitHub. Here's a summary:
 
-- actions/ contains GitHub Actions with configuration that is used by biocommons repos.
+- `.github/ISSUE_TEMPLATE` are used by all organization repos directly.  Changes to these templates will be available to other organizations repos. NOTE: If repos have their own `.github/ISSUE_TEMPLATE` directory, these templates will not be available (so don't do that).
 
-- .github/ISSUE_TEMPLATE are used by all organization repos directly.  Changes to these templates will be available to other organizations repos. NOTE: If repos have their own .github/ISSUE_TEMPLATE directory, these templates will not be available (so don't do that).
+- `.github/workflows/` contains GitHub Actions with configuration that is used by biocommons repos.
 
-- .github/workflows are *templates* available for manual selective incorporation into other repos.
+- `docs/` contains templates for `CODE_OF_CONDUCT.md`, etc.
 
-- docs contains templates for CODE_OF_CONDUCT.md, etc. (N.B. GitHub says that docs/ is a viable option, but it appears that this is a secondary and less-effective optiion. These files should probably move to the root.)
+- `etc/` contains global configuration, such as labels. (This is a Reece-ism.)
 
-- etc/ is a Reece-ism.  It is intended for global configuration, such as labels.
+- `profile/README.md` is our organizational README at https://github.com/biocommons/
 
-- profile/README.md is our organizational README at https://github.com/biocommons/
+- workflow-templates are *templates* available for manual selective incorporation into other repos.
 
 ---
 
