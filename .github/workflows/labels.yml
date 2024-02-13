@@ -20,7 +20,7 @@ jobs:
         with:
           sparse-checkout: .github/labels.yml
 
-      - uses: reece/label-sync@v2
+      - uses: reece/label-sync@main
         with:
           config-file: |
             https://raw.githubusercontent.com/biocommons/.github/main/etc/labels.yml
