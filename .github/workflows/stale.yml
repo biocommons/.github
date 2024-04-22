@@ -8,8 +8,8 @@ jobs:
       - uses: actions/stale@v9
         with:
           exempt-all-milestones: true
-          exempt-issue-labels: bug,keep-alive
-          exempt-pr-labels: bug,keep-alive
+          exempt-issue-labels: bug,keep alive
+          exempt-pr-labels: bug,keep alive
 
           days-before-issue-close: 7
           days-before-issue-stale: 90
