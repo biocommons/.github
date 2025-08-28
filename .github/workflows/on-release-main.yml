@@ -1,0 +1,48 @@
+name: release-main
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: write
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up the environment
+        uses: ./.github/actions/setup-python-env
+
+      - name: Download updated pyproject.toml
+        uses: actions/download-artifact@v4
+        with:
+          name: pyproject-toml
+
+      - name: Build package
+        run: uv build
+
+      - name: Publish package
+        # Requires trusted publisher configuration at pypi
+        # No environment tokens required
+        run: uv publish
+
+  deploy-docs:
+    needs: publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up the environment
+        uses: ./.github/actions/setup-python-env
+
+      - name: Deploy documentation
+        run: uv run mkdocs gh-deploy --force
