@@ -18,6 +18,9 @@ jobs:
     name: Code Quality
     runs-on: ubuntu-latest
     steps:
+      - name: Install packages
+        run: sudo apt update && sudo apt install -y zsh
+      
       - name: Check out
         uses: actions/checkout@v5
 
@@ -42,6 +45,9 @@ jobs:
         python-version: ["3.11", "3.12", "3.13"]
 
     steps:
+      - name: Install packages
+        run: sudo apt update && sudo apt install -y zsh
+      
       - name: Check out
         uses: actions/checkout@v5
 
@@ -74,6 +80,9 @@ jobs:
       id-token: write
 
     steps:
+      - name: Install packages
+        run: sudo apt update && sudo apt install -y zsh
+      
       - name: Check out
         uses: actions/checkout@v5
 
@@ -99,6 +108,9 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Install packages
+        run: sudo apt update && sudo apt install -y zsh
+      
       - name: Check out
         uses: actions/checkout@v5
 
