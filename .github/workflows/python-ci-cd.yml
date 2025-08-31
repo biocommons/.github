@@ -39,7 +39,9 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-
+    permissions:
+      id-token: write
+      
     strategy:
       matrix:
         python-version: ["3.11", "3.12", "3.13"]
@@ -67,8 +69,8 @@ jobs:
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4
         if: ${{ matrix.python-version == '3.13' }}
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        with:
+          use_oidc: true
 
   build-and-deploy:
     name: Build & Deploy
