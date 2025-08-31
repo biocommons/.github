@@ -12,6 +12,10 @@ on:
         required: false
         type: boolean
         default: false
+    secrets:
+      pypi-token:
+        description: "PyPI API Token for publishing"
+        required: false
 
 jobs:
   cqa:
@@ -19,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install packages
-        run: sudo apt update && sudo apt install -y zsh
+        run: sudo apt update && sudo apt upgrade -y && sudo apt install -y zsh
       
       - name: Check out
         uses: actions/checkout@v5
@@ -48,7 +52,7 @@ jobs:
 
     steps:
       - name: Install packages
-        run: sudo apt update && sudo apt install -y zsh
+        run: sudo apt update && sudo apt upgrade -y && sudo apt install -y zsh
       
       - name: Check out
         uses: actions/checkout@v5
@@ -83,7 +87,7 @@ jobs:
 
     steps:
       - name: Install packages
-        run: sudo apt update && sudo apt install -y zsh
+        run: sudo apt update && sudo apt upgrade -y && sudo apt install -y zsh
       
       - name: Check out
         uses: actions/checkout@v5
@@ -102,6 +106,8 @@ jobs:
 
       - name: Publish package to PyPI
         run: uv publish
+        env:
+          UV_PUBLISH_TOKEN: ${{ secrets.pypi-token }}
 
   deploy-docs:
     name: Publish Docs
@@ -112,7 +118,7 @@ jobs:
       contents: write
     steps:
       - name: Install packages
-        run: sudo apt update && sudo apt install -y zsh
+        run: sudo apt update && sudo apt upgrade -y && sudo apt install -y zsh
       
       - name: Check out
         uses: actions/checkout@v5
