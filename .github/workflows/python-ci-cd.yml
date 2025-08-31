@@ -7,8 +7,8 @@ permissions:
 on:
   workflow_call:
     inputs:
-      run-deploy:
-        description: 'Set to "true" to run the build and deploy jobs if tests pass.'
+      publish:
+        description: 'Set to "true" to publish the package and docs'
         required: false
         type: boolean
         default: false
@@ -72,10 +72,10 @@ jobs:
         with:
           use_oidc: true
 
-  build-and-deploy:
-    name: Build & Deploy
+  publish-package:
+    name: Publish Package
     needs: [cqa, test]
-    if: ${{ inputs.run-deploy == true }}
+    if: ${{ inputs.publish == true }}
     runs-on: ubuntu-latest
     environment: pypi
     permissions:
@@ -104,9 +104,9 @@ jobs:
         run: uv publish
 
   deploy-docs:
-    name: Deploy Docs
-    needs: build-and-deploy
-    if: ${{ inputs.run-deploy == true }}
+    name: Publish Docs
+    needs: publish-package
+    if: ${{ inputs.publish == true }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
