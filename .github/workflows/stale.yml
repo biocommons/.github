@@ -5,22 +5,32 @@ jobs:
   stale:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/stale@v9
+      - uses: actions/stale@v10
         with:
           exempt-all-milestones: true
-          exempt-issue-labels: bug,keep alive
-          exempt-pr-labels: bug,keep alive
+          exempt-issue-labels: bug
+          exempt-pr-labels: bug
+          remove-stale-when-updated: true
 
-          days-before-issue-close: 7
+          days-before-issue-close: 30
           days-before-issue-stale: 90
           stale-issue-label: stale
-          stale-issue-message: 'This issue is stale because it has been open 90 days with no activity. Remove stale label or comment or this will be closed in 7 days.'
+          stale-issue-message: |
+            This issue is stale because it has been open 90 days with no activity.
+            Remove stale label or comment or this will be closed in 30 days.
           close-issue-label: closed-by-stale
-          close-issue-message: 'This issue was closed because it has been stalled for 7 days with no activity.'
+          close-issue-message: |
+            This issue was closed because it has been stale for 30 days and there was
+            no response after warning of closure.
 
-          days-before-pr-close: 7
-          days-before-pr-stale: 30
+          # stale prs are no longer closed
+          days-before-pr-close: -1
+          days-before-pr-stale: 7
           stale-pr-label: stale
-          stale-pr-message: 'This PR is stale because it has been open 30 days with no activity. Remove stale label or comment or this will be closed in 7 days.'
+          stale-pr-message: |
+            This issue is stale because it has been open 180 days with no activity.
+            Remove stale label or comment or this will be closed in 30 days.
           close-pr-label: closed-by-stale
-          close-pr-message: 'This PR was closed because it has been stalled for 7 days with no activity.'
+          close-pr-message: |
+            This issue was closed because it has been stale for 30 days and there was
+            no response after warning of closure.
