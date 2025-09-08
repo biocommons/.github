@@ -28,11 +28,6 @@
   color: "e4e669"
   description: "This doesn't seem right"
 
-- name: "keep alive"
-  color: "666666"
-  description: "exempt issue from staleness checks"
-  aliases: ["keep alive"]
-
 - name: "project proposal"
   color: "d876e3"
   description: "project proposal for interns and GSoC students"
