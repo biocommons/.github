@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
-      
+
     strategy:
       matrix:
         python-version: ["3.11", "3.12", "3.13"]
@@ -50,6 +50,13 @@ jobs:
     steps:
       - name: Check out
         uses: actions/checkout@v5
+
+      - name: Install system dependencies
+        run: |
+          if [ -f .github/system-dependencies.txt ]; then
+            sudo apt-get update
+            xargs sudo apt-get install -y < .github/system-dependencies.txt
+          fi
 
       - uses: actions/cache@v4
         with:
