@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 🗨️ General Questions & Discussions
+    url: https://github.com/biocommons/discussions
+    about: For general questions, cross-project ideas, or if you're not sure where to post
+  - name: 💡 Cross-Project Feature Ideas
+    url: https://github.com/biocommons/discussions/new?category=ideas
+    about: Feature requests that involve multiple Biocommons projects
+  - name: 💻 Developer Discussions
+    url: https://github.com/biocommons/discussions/new?category=developers
+    about: Technical design discussions, coordination, and strategy affecting multiple projects
