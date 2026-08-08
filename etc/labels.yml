@@ -1,56 +1,117 @@
-# Global biocommons labels
+# Org-wide label set — merged into every repo via label-sync.
+# Dimensions: type:*, priority:*, meta:*, good-first-issue/help-wanted
+#
+# Color convention: one flat color per dimension (not a shade ramp) so the
+# hue itself signals the dimension at a glance. Priority is the one ordered
+# dimension, so it keeps a ramp — but tightened to a single hue (red) with
+# all four steps verified to render white text under GitHub's contrast
+# algorithm (perceived-lightness < 0.453). See notes at bottom.
 
-- name: "bug"
-  color: "d73a4a"
+# --- type: what kind of issue this is (mutually exclusive) ---
+- name: "type:bug"
+  color: "1d4ed8"
   description: "Something isn't working"
+  aliases: ["bug"]
 
-- name: "documentation"
-  color: "0075ca"
-  description: "Improvements or additions to documentation"
-
-- name: "duplicate"
-  color: "cfd3d7"
-  description: "This issue or pull request already exists"
-
-- name: "enhancement"
-  color: "a2eeef"
+- name: "type:feature"
+  color: "1d4ed8"
   description: "New feature or request"
+  aliases: ["enhancement"]
 
-- name: "good first issue"
-  color: "7057ff"
-  description: "Good for newcomers"
+- name: "type:docs"
+  color: "1d4ed8"
+  description: "Improvements or additions to documentation"
+  aliases: ["documentation"]
 
-- name: "help wanted"
-  color: "008672"
-  description: "Extra attention is needed"
+- name: "type:epic"
+  color: "1d4ed8"
+  description: "A large body of work that encompasses multiple issues or features"
+  aliases: ["epic"]
 
-- name: "invalid"
-  color: "e4e669"
-  description: "This doesn't seem right"
+- name: "type:chore"
+  color: "1d4ed8"
+  description: "Maintenance work with no user-facing behavior change"
 
-- name: "project proposal"
-  color: "d876e3"
-  description: "project proposal for interns and GSoC students"
-
-- name: "question"
-  color: "d876e3"
+- name: "type:question"
+  color: "1d4ed8"
   description: "Further information is requested"
+  aliases: ["question"]
 
-- name: "rfc"
-  color: "d876e3"
-  description: "Request for comments"
+- name: "type:rfc"
+  color: "1d4ed8"
+  description: "Request for comments / design discussion"
+  aliases: ["rfc"]
 
-- name: "stale"
-  color: "777777"
-  description: "Issue is stale and subject to automatic closing"
-  aliases: ["Stale"]
+- name: "type:proposal"
+  color: "1d4ed8"
+  description: "Project proposal for interns and GSoC students"
+  aliases: ["project proposal"]
 
-- name: "stale closed"
-  color: "444444"
-  description: "Issue was closed automatically due to inactivity"
-  aliases: ["stale-closed"]
+# --- priority: triage urgency (mutually exclusive, ordered ramp, single hue) ---
+- name: "priority:P0"
+  color: "450a0a"
+  description: "Drop everything — critical/blocking"
 
-- name: "won't fix"
-  color: "ffffff"
+- name: "priority:P1"
+  color: "991b1b"
+  description: "High priority, next up"
+
+- name: "priority:P2"
+  color: "b91c1c"
+  description: "Normal priority"
+
+- name: "priority:P3"
+  color: "dc2626"
+  description: "Low priority / nice to have"
+
+# --- contributor-facing signals (orthogonal, opt-in) ---
+# No prefix: GitHub-ecosystem-standard terms, recognizable on sight.
+- name: "good-first-issue"
+  color: "166534"
+  description: "Good for newcomers"
+  aliases: ["good first issue"]
+
+- name: "help-wanted"
+  color: "166534"
+  description: "Extra attention is needed"
+  aliases: ["help wanted"]
+
+# --- meta: housekeeping / disposition, not a "topic" ---
+- name: "meta:duplicate"
+  color: "475569"
+  description: "This issue or pull request already exists"
+  aliases: ["duplicate"]
+
+- name: "meta:invalid"
+  color: "475569"
+  description: "This doesn't seem right"
+  aliases: ["invalid"]
+
+- name: "meta:wontfix"
+  color: "475569"
   description: "This will not be worked on"
-  aliases: ["wontfix"]
+  aliases: ["won't fix", "wontfix"]
+
+- name: "meta:stale"
+  color: "475569"
+  description: "Issue is stale and subject to automatic closing"
+  aliases: ["stale", "Stale"]
+
+- name: "meta:stale-closed"
+  color: "475569"
+  description: "Issue was closed automatically due to inactivity"
+  aliases: ["stale closed", "stale-closed"]
+
+# Color notes:
+#   type:*                       #1d4ed8  blue, one flat color, PL=0.304
+#   priority:*                   red ramp, darkest=P0 → lightest=P3, all PL<0.33
+#   good-first-issue/help-wanted #166534  green, one flat color, PL=0.316
+#   meta:*                       #475569  slate, one flat color, PL=0.327
+#   area:*                       per-repo concern — not defined here
+#
+# All values verified white-text-safe against GitHub's actual algorithm:
+#   perceived_lightness = (R*0.2126 + G*0.7152 + B*0.0722) / 255
+#   white text if perceived_lightness < 0.453
+# Kept meaningful margin below the threshold since GitHub's formula has a
+# known bug (treats sRGB as linear RGB) that skews borderline colors toward
+# black text more than a correct calculation would.
