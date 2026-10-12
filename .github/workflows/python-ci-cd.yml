@@ -33,9 +33,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: |
             ~/.cache/pre-commit
@@ -60,7 +60,7 @@ jobs:
 
     steps:
       - name: Check out
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: Install system dependencies
         run: |
@@ -69,7 +69,7 @@ jobs:
             xargs sudo apt-get install -y < .github/system-dependencies.txt
           fi
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: ~/.cache/pre-commit
           key: pydeps-${{ hashFiles('.pre-commit-config.yaml', 'pyproject.toml') }}
@@ -83,7 +83,7 @@ jobs:
         run: make test
 
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v7
         if: ${{ matrix.python-version == inputs.coverage-python-version }}
         with:
           use_oidc: true
@@ -95,7 +95,7 @@ jobs:
       contents: read
     steps:
       - name: Check out
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: Set up the environment
         uses: ./.github/actions/setup-python-env
@@ -114,9 +114,9 @@ jobs:
 
     steps:
       - name: Check out
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: ~/.cache/pre-commit
           key: pydeps-${{ hashFiles('.pre-commit-config.yaml', 'pyproject.toml') }}
@@ -142,9 +142,9 @@ jobs:
       contents: write
     steps:
       - name: Check out
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: ~/.cache/pre-commit
           key: pydeps-${{ hashFiles('.pre-commit-config.yaml', 'pyproject.toml') }}
