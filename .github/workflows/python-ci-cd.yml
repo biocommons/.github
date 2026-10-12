@@ -12,6 +12,16 @@ on:
         required: false
         type: boolean
         default: false
+      python-versions:
+        description: "JSON list of Python versions to test"
+        required: false
+        type: string
+        default: '["3.11", "3.12", "3.13", "3.14", "3.15"]'
+      coverage-python-version:
+        description: "Python version for which coverage is uploaded; must be in python-versions"
+        required: false
+        type: string
+        default: "3.15"
     secrets:
       pypi-token:
         description: "PyPI API Token for publishing"
@@ -45,7 +55,8 @@ jobs:
 
     strategy:
       matrix:
-        python-version: ["3.11", "3.12", "3.13"]
+        python-version: ${{ fromJSON(inputs.python-versions) }}
+      fail-fast: false
 
     steps:
       - name: Check out
@@ -73,13 +84,28 @@ jobs:
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4
-        if: ${{ matrix.python-version == '3.13' }}
+        if: ${{ matrix.python-version == inputs.coverage-python-version }}
         with:
           use_oidc: true
 
+  check-docs:
+    name: Check Docs
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check out
+        uses: actions/checkout@v5
+
+      - name: Set up the environment
+        uses: ./.github/actions/setup-python-env
+
+      - name: Check if documentation can be built
+        run: uv run mkdocs build -s
+
   publish-package:
     name: Publish Package
-    needs: [cqa, test]
+    needs: [cqa, test, check-docs]
     if: ${{ inputs.publish == true }}
     runs-on: ubuntu-latest
     environment: pypi
