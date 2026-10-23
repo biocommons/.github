@@ -7,6 +7,16 @@ permissions:
 on:
   workflow_call:
     inputs:
+      coverage-python-version:
+        description: "Python version for which coverage is uploaded; must be in python-versions"
+        required: false
+        type: string
+        default: "3.15"
+      default-python-version:
+        description: "Python version for non-matrix jobs (cqa, docs, publish)"
+        required: false
+        type: string
+        default: "3.15"
       publish:
         description: 'Set to "true" to publish the package and docs'
         required: false
@@ -17,11 +27,6 @@ on:
         required: false
         type: string
         default: '["3.11", "3.12", "3.13", "3.14", "3.15"]'
-      coverage-python-version:
-        description: "Python version for which coverage is uploaded; must be in python-versions"
-        required: false
-        type: string
-        default: "3.15"
     secrets:
       pypi-token:
         description: "PyPI API Token for publishing"
@@ -37,16 +42,22 @@ jobs:
 
       - uses: actions/cache@v6
         with:
-          path: |
-            ~/.cache/pre-commit
-          key: pydeps-${{ hashFiles('.pre-commit-config.yaml', 'pyproject.toml') }}
+          path: ~/.cache/prek
+          key: prek-${{ hashFiles('.pre-commit-config.yaml') }}
 
-      - name: Set up the environment
-        uses: ./.github/actions/setup-python-env
+      - name: Set up uv and Python ${{ inputs.default-python-version }}
+        uses: astral-sh/setup-uv@v10.3.2
+        with:
+          cache-suffix: ${{ inputs.default-python-version }}
+          enable-cache: true
+          python-version: ${{ inputs.default-python-version }}
+
+      - name: Install dependencies
+        run: uv sync --locked
 
       - name: Run code quality assessments
         run: make cqa
-  
+
   test:
     name: Test
     runs-on: ubuntu-latest
@@ -69,23 +80,25 @@ jobs:
             xargs sudo apt-get install -y < .github/system-dependencies.txt
           fi
 
-      - uses: actions/cache@v6
+      - name: Set up uv and Python ${{ matrix.python-version }}
+        uses: astral-sh/setup-uv@v10.3.2
         with:
-          path: ~/.cache/pre-commit
-          key: pydeps-${{ hashFiles('.pre-commit-config.yaml', 'pyproject.toml') }}
-
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: ./.github/actions/setup-python-env
-        with:
+          cache-suffix: ${{ matrix.python-version }}
+          enable-cache: true
           python-version: ${{ matrix.python-version }}
 
-      - name: Run make test
-        run: make test
+      - name: Install dependencies
+        run: uv sync --locked
+
+      - name: Run tests
+        run: make ${{ matrix.python-version == inputs.coverage-python-version && 'test-coverage' || 'test' }}
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v7
         if: ${{ matrix.python-version == inputs.coverage-python-version }}
         with:
+          fail_ci_if_error: true
+          files: coverage.xml
           use_oidc: true
 
   check-docs:
@@ -97,11 +110,31 @@ jobs:
       - name: Check out
         uses: actions/checkout@v7
 
-      - name: Set up the environment
-        uses: ./.github/actions/setup-python-env
+      - name: Set up uv and Python ${{ inputs.default-python-version }}
+        uses: astral-sh/setup-uv@v10.3.2
+        with:
+          cache-suffix: ${{ inputs.default-python-version }}
+          enable-cache: true
+          python-version: ${{ inputs.default-python-version }}
+
+      - name: Install dependencies
+        run: uv sync --locked
 
       - name: Check if documentation can be built
-        run: uv run mkdocs build -s
+        run: make docs-test
+
+  # Single stable check for branch protection; matrix changes need no protection updates.
+  # if: always() is required: a skipped required check counts as passing.
+  ci-ok:
+    name: ci-ok
+    if: always()
+    needs: [cqa, test, check-docs]
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - name: Fail unless all required jobs succeeded
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') || contains(needs.*.result, 'skipped')
+        run: exit 1
 
   publish-package:
     name: Publish Package
@@ -116,20 +149,18 @@ jobs:
       - name: Check out
         uses: actions/checkout@v7
 
-      - uses: actions/cache@v6
+      - name: Set up uv and Python ${{ inputs.default-python-version }}
+        uses: astral-sh/setup-uv@v10.3.2
         with:
-          path: ~/.cache/pre-commit
-          key: pydeps-${{ hashFiles('.pre-commit-config.yaml', 'pyproject.toml') }}
+          cache-suffix: ${{ inputs.default-python-version }}
+          enable-cache: true
+          python-version: ${{ inputs.default-python-version }}
 
-      - name: Set up Python
-        uses: ./.github/actions/setup-python-env
+      - name: Install dependencies
+        run: uv sync --locked
 
-      - name: Build sdist and wheel with uv
-        run: |
-          uv build
-
-      - name: Publish package to PyPI
-        run: uv publish
+      - name: Build and publish package to PyPI
+        run: make publish
         env:
           UV_PUBLISH_TOKEN: ${{ secrets.pypi-token }}
 
@@ -144,13 +175,15 @@ jobs:
       - name: Check out
         uses: actions/checkout@v7
 
-      - uses: actions/cache@v6
+      - name: Set up uv and Python ${{ inputs.default-python-version }}
+        uses: astral-sh/setup-uv@v10.3.2
         with:
-          path: ~/.cache/pre-commit
-          key: pydeps-${{ hashFiles('.pre-commit-config.yaml', 'pyproject.toml') }}
+          cache-suffix: ${{ inputs.default-python-version }}
+          enable-cache: true
+          python-version: ${{ inputs.default-python-version }}
 
-      - name: Set up the environment
-        uses: ./.github/actions/setup-python-env
+      - name: Install dependencies
+        run: uv sync --locked
 
       - name: Deploy documentation
-        run: uv run mkdocs gh-deploy --force
+        run: make docs-deploy
