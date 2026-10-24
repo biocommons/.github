@@ -138,7 +138,7 @@ jobs:
 
   publish-package:
     name: Publish Package
-    needs: [cqa, test, check-docs]
+    needs: ci-ok  # publish gated by the same aggregate check as merges
     if: ${{ inputs.publish == true }}
     runs-on: ubuntu-latest
     environment: pypi
